@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title>Go modules</title>
+
+    <meta charset="utf-8">
+  </head>
+
+  <body>
+    <h1>Go modules</h1>
+
+    <ul>
+      <% modules.each do |id, name| -%>
+      <li><a href="/<%= id %>"><%= name %></a></li>
+      <% end -%>
+    </ul>
+  </body>
+</html>

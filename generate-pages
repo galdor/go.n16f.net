@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+
+require "erb"
+require "fileutils"
+
+def root_path(subpath)
+  File.join(File.expand_path(File.dirname(__FILE__)), subpath)
+end
+
+def output_path(subpath)
+  root_path(File.join("pages", subpath))
+end
+
+def template(subpath)
+  ERB.new(File.read(root_path(subpath)), trim_mode: "-")
+end
+
+def render(subpath, template, data)
+  File.write(output_path(subpath), template.result_with_hash(data))
+end
+
+FileUtils.rm_rf(output_path("/"))
+Dir.mkdir(output_path("/"))
+
+module_names = File.readlines(root_path("modules.txt")).map(&:chomp)
+
+modules = {}
+module_names.each do |name|
+  id = name.sub(/^go-/, "")
+  modules[id] = name
+end
+
+render("index.html", template("index.erb"), {modules: modules})
+
+module_template = template("module.erb")
+modules.each do |id, name|
+  render("#{id}.html", module_template, {id: id, name: name})
+end
