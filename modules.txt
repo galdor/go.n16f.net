@@ -5,3 +5,4 @@ go-program
 go-service
 go-thumbhash
 go-uuid
+go-yamlutils
