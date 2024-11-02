@@ -1,8 +1,9 @@
 go-acme
 go-ejson
+go-eyaml
 go-log
+go-pp
 go-program
 go-service
 go-thumbhash
 go-uuid
-go-eyaml
