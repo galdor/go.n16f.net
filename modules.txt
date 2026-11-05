@@ -6,6 +6,7 @@ go-eyaml
 go-log
 go-pp
 go-program
+go-recordfmt
 go-service
 go-thumbhash
 go-uuid
